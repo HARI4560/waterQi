@@ -11,12 +11,12 @@ export default function WQIHero({ wqi, category, city, state, lastUpdated, water
 
       <div className="hero-content">
         <div className="hero-gauge-container">
-          <svg className="hero-gauge animate-breathe" viewBox="0 0 200 200">
+          <svg className="hero-gauge animate-breathe" viewBox="-15 -15 230 230">
             <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="8" />
             <circle cx="100" cy="100" r="90" fill="none" stroke={catInfo.color} strokeWidth="8" strokeLinecap="round"
               strokeDasharray={circumference} strokeDashoffset={circumference - progress}
-              style={{ transform: 'rotate(-90deg)', transformOrigin: 'center', transition: 'stroke-dashoffset 1.5s ease-out' }}
-              filter={`drop-shadow(0 0 8px ${catInfo.color})`} />
+              style={{ transform: 'rotate(-90deg)', transformOrigin: '100px 100px', transition: 'stroke-dashoffset 1.5s ease-out' }}
+              filter={`drop-shadow(0 0 12px ${catInfo.color})`} />
             <circle cx="100" cy="100" r="78" fill="rgba(255,255,255,0.02)" />
           </svg>
           <div className="hero-gauge-content">

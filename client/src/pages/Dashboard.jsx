@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import WQIHero from '../components/dashboard/WQIHero';
 import ParameterCards from '../components/dashboard/ParameterCards';
 import WQITrendsChart from '../components/dashboard/WQITrendsChart';
+import ComparativeTrendsChart from '../components/dashboard/ComparativeTrendsChart';
 import LocationsList from '../components/dashboard/LocationsList';
 import WQIMap from '../components/dashboard/WQIMap';
 import HealthAdvice from '../components/dashboard/HealthAdvice';
@@ -79,8 +80,12 @@ export default function Dashboard() {
 
         <ParameterCards parameters={data.avgParameters} />
 
-        {trends && trends.length > 0 && (
+        {trends && trends.length > 0 && (!data.waterBodies || data.waterBodies.length < 2) && (
           <WQITrendsChart readings={trends} />
+        )}
+
+        {data.waterBodies && data.waterBodies.length >= 2 && (
+          <ComparativeTrendsChart waterBodies={data.waterBodies} />
         )}
       </div>
 

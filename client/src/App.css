@@ -436,12 +436,48 @@ a:hover {
   justify-content: center;
   position: relative;
   width: 100%;
+  padding: 10px;
 }
 
 .hero-gauge {
   width: 100%;
-  max-width: 200px;
+  max-width: 220px;
   height: auto;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.hero-gauge-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  text-align: center;
+  width: 140px;
+}
+
+.hero-wqi-score {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(0,0,0,0.5);
+  margin-top: -6px;
+}
+
+.hero-wqi-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-text-secondary);
+  margin-top: -2px;
+  margin-bottom: 2px;
 }
 
 .hero-text-content {
@@ -718,6 +754,8 @@ a:hover {
   transform: rotate(-135deg);
   position: relative;
   z-index: 2;
+  background: var(--color-accent-blue) !important;
+  box-shadow: 0 0 15px var(--color-accent-blue) !important;
   animation: dropFloat 2s infinite ease-in-out alternate;
 }
 
@@ -726,6 +764,7 @@ a:hover {
   width: 40px;
   height: 40px;
   border: 2px solid;
+  border-color: var(--color-accent-blue) !important;
   border-radius: 50%;
   z-index: 1;
   animation: rippleExpand 2s infinite ease-out;
