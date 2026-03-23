@@ -467,7 +467,7 @@ a:hover {
   font-size: 3rem;
   font-weight: 900;
   line-height: 1;
-  text-shadow: 0 0 20px rgba(0,0,0,0.5);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   margin-top: -6px;
 }
 
@@ -684,7 +684,7 @@ a:hover {
   overflow: hidden;
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-areas: 
+  grid-template-areas:
     "main visual"
     "desc desc"
     "disc disc";
@@ -771,24 +771,39 @@ a:hover {
 }
 
 @keyframes dropFloat {
-  0% { transform: rotate(-135deg) translate(0, 0); }
-  100% { transform: rotate(-135deg) translate(4px, 4px); }
+  0% {
+    transform: rotate(-135deg) translate(0, 0);
+  }
+
+  100% {
+    transform: rotate(-135deg) translate(4px, 4px);
+  }
 }
 
 @keyframes rippleExpand {
-  0% { transform: scale(0.5); opacity: 1; border-width: 2px; }
-  100% { transform: scale(2); opacity: 0; border-width: 0px; }
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+    border-width: 2px;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+    border-width: 0px;
+  }
 }
 
 @media (max-width: 500px) {
   .impact-banner {
     grid-template-columns: 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       "main"
       "visual"
       "desc"
       "disc";
   }
+
   .impact-visual {
     justify-content: flex-start;
     padding-left: 10px;

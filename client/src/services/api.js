@@ -4,9 +4,34 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_BASE,
-  timeout: 10000,
+  timeout: 30000, // 30s timeout — gives cold-start servers time to wake up
   headers: { 'Content-Type': 'application/json' }
 });
+
+// Automatic retry interceptor for failed requests (handles cold starts)
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const config = error.config;
+    if (!config) return Promise.reject(error);
+
+    config.__retryCount = config.__retryCount || 0;
+    const maxRetries = 3;
+
+    // Only retry on network errors or 5xx server errors (not 4xx client errors)
+    const isRetryable = !error.response || (error.response.status >= 500);
+
+    if (config.__retryCount < maxRetries && isRetryable) {
+      config.__retryCount += 1;
+      const delay = Math.min(1000 * Math.pow(2, config.__retryCount - 1), 8000); // 1s, 2s, 4s
+      console.log(`API retry ${config.__retryCount}/${maxRetries} for ${config.url} in ${delay}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+      return api(config);
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 // Dashboard APIs
 

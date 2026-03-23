@@ -29,8 +29,8 @@ export default function WQITrendsChart({ readings }) {
         <h2 className="section-title"><span>📈</span> WQI Trends</h2>
         <span className="section-subtitle">Monthly water quality changes</span>
       </div>
-      <div className="chart-container-wrapper">
-        <ResponsiveContainer width="100%" height={300}>
+      <div className="chart-container-wrapper" style={{ width: '100%', height: '300px', position: 'relative' }}>
+        <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="wqiGradient" x1="0" y1="0" x2="0" y2="1">
