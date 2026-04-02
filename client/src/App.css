@@ -96,7 +96,100 @@ a:hover {
   background: var(--color-accent-cyan);
 }
 
+/* ─── Loading Spinner ─── */
+.loading-spinner-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  width: 100%;
+}
 
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.loading-rings {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.ring-outer {
+  width: 100px;
+  height: 100px;
+  border-top-color: var(--color-accent-cyan);
+  border-right-color: var(--color-accent-blue);
+  animation: spinRing 1.2s linear infinite;
+}
+
+.ring-inner {
+  width: 68px;
+  height: 68px;
+  border-bottom-color: var(--color-accent-purple);
+  border-left-color: var(--color-accent-cyan);
+  animation: spinRing 0.9s linear infinite reverse;
+}
+
+.loading-drop {
+  font-size: 1.8rem;
+  animation: dropBounce 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+}
+
+.loading-message {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+.loading-bar-track {
+  width: 180px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-blue), var(--color-accent-purple));
+  border-radius: 3px;
+  animation: shimmerBar 1.5s ease-in-out infinite;
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dropBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmerBar {
+  0% { transform: translateX(-180px); }
+  100% { transform: translateX(180px); }
+}
 /* ─── Utility Grid/Flex ─── */
 .container {
   width: 100%;
